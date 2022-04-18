@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:recipesapp/models/recipe.dart';
+import 'package:recipesapp/screens/recipe-screen.dart';
 
 class RecipeCard extends StatelessWidget {
   const RecipeCard({Key? key, this.active, this.index, this.recipe})
@@ -93,21 +94,30 @@ class RecipeCard extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Container(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 8.5,
-                      vertical: 5,
-                    ),
-                    height: 24,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(12),
-                      color: Colors.white,
-                    ),
-                    child: Text(
-                      'Recipe',
-                      style: TextStyle(
-                        fontSize: 13,
-                        color: recipe!.startColor,
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const RecipeScreen()),
+                      );
+                    },
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 8.5,
+                        vertical: 5,
+                      ),
+                      height: 24,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(12),
+                        color: Colors.white,
+                      ),
+                      child: Text(
+                        'Ver más',
+                        style: TextStyle(
+                          fontSize: 13,
+                          color: recipe!.startColor,
+                        ),
                       ),
                     ),
                   ),
